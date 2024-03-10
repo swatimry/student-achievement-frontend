@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react'
 import PrivateRoute from "./components/PrivateRoute";
 import Categorycertificate from "./pages/categorycertificate";
 import Yearcertificate from "./pages/yearcertificate";
+import AcademicYearcertificate from "./pages/Academic_year";
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
  
 
   return (
-    <div className="w-screen h-full bg-richblack-900 flex flex-col">
+    <div className="w-[100%] h-full bg-richblack-900 flex flex-col">
       <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
 
       <Routes>
@@ -41,6 +42,7 @@ function App() {
         <Route path="/mycertificates" element={<Mycertificates/>}/>
         <Route path="/categorycert" element={<Categorycertificate/>}/>
         <Route path="/yearcert" element={<Yearcertificate/>}/>
+        <Route path="/academicyear" element={<AcademicYearcertificate/>}/>
 
       </Routes>
 

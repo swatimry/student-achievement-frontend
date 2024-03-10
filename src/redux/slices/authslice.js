@@ -72,6 +72,7 @@ export const createcertificate = createAsyncThunk(
           AcademicYear: formData.AcademicYear,
           Category: formData.Category,
           googleDriveLink: formData.Googledrivelink,
+          student_name:formData.student_name
         },
         {
           headers: {
@@ -144,12 +145,35 @@ export const getcertificatesbycategory = createAsyncThunk(
   "getcertsby_cat",
   async (categorydata, { rejectWithValue }) => {
     const category=categorydata.category;
-    console.log(typeof year); 
+    console.log(category);
     
 
     try {
       const response = await axios.get(`${server}/api/v1/getbycategory`, {
        params: {category:category}, // Use "data" instead of "params" for sending data in the request body
+        withCredentials: true,
+      });
+
+      const result = await response.data;
+      console.log(result.data);
+      return result.data;
+    } catch (error) {
+      console.log("here");
+
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+export const getcertificatesbyAcademic_year = createAsyncThunk(
+  "getcertsby_academic_year",
+  async (yeardata, { rejectWithValue }) => {
+    const acedemic_year=yeardata.year;
+    console.log(typeof year); 
+    
+
+    try {
+      const response = await axios.get(`${server}/api/v1/getbyacademicYear`, {
+       params: { AcademicYear:acedemic_year }, // Use "data" instead of "params" for sending data in the request body
         withCredentials: true,
       });
 
@@ -250,6 +274,12 @@ const authslice = createSlice({
         state.allmycertificates=action.payload
       })
       .addCase(getcertificatesadmin.rejected,(state,action)=>{
+        state.stateerror=action.payload
+      })
+      .addCase(getcertificatesbyAcademic_year.fulfilled,(state,action)=>{
+        state.academicerts=action.payload
+      })
+      .addCase(getcertificatesbyAcademic_year.rejected,(state,action)=>{
         state.stateerror=action.payload
       })
   },

@@ -30,6 +30,14 @@ import { useNavigate } from "react-router-dom";
       [event.target.name]: event.target.value,
     }));
   }
+  function accountonclick(){
+    setFormData((prevData) => ({ ...prevData, accountType: "Student" }));
+    setAccountType("Student");
+  }
+  function accountonclickadmin(){
+    setFormData((prevData) => ({ ...prevData, accountType: "Admin" }));
+    setAccountType("Admin");
+  }
 
   function submitHandler(event) {
     event.preventDefault();
@@ -70,7 +78,7 @@ import { useNavigate } from "react-router-dom";
               ? "bg-richblack-900 text-richblack-5"
               : "bg-transparent text-richblack-200"
           } py-2 px-5 rounded-full transition-all duration-200`}
-          onClick={() => setFormData((prevData) => ({ ...prevData, accountType: "Student" }))}
+          onClick={accountonclick}
         >
           Student
         </button>
@@ -81,7 +89,7 @@ import { useNavigate } from "react-router-dom";
               ? "bg-richblack-900 text-richblack-5"
               : "bg-transparent text-richblack-200"
           } py-2 px-5 rounded-full transition-all duration-200`}
-          onClick={() => setFormData((prevData) => ({ ...prevData, accountType: "Admin" }))}
+          onClick={accountonclickadmin}
         >
           Admin
         </button>

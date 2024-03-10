@@ -20,7 +20,8 @@ const CreateCertificate = () => {
     event.preventDefault();
     const updatedFormData = {
       ...formData,
-      userId: user._id, // Assuming user object has an id property
+      userId: user._id, 
+      student_name:user.name// Assuming user object has an id property
     };
     dispatch(createcertificate(updatedFormData))
     .then((result) => {
@@ -45,10 +46,10 @@ const CreateCertificate = () => {
   }
 
   return (
-    <div className="flex justify-center items-center text-white text-3xl h-screen">
-      <form onSubmit={submitHandler}>
-        <div className="flex justify-between mt-4">
-          <label>
+    <div className="flex justify-center items-center gap-4 text-white mx-auto h-screen">
+      <form onSubmit={submitHandler} className="flex flex-col gap-5"> 
+        <div className="flex justify-between mt-4 w-[100%]">
+          <label className="min-w-[700px]">
             <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
               {" "}
               Certificate Name<sup className="text-pink-200">*</sup>
@@ -60,7 +61,7 @@ const CreateCertificate = () => {
               onChange={changeHandler}
               placeholder="Enter Certificate Name"
               value={formData.Certificate_Name}
-              className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] border-b-2"
+              className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] border-b-2 "
             />
           </label>
         </div>
@@ -114,13 +115,13 @@ const CreateCertificate = () => {
               type="text"
               name="Category"
               onChange={changeHandler}
-              placeholder="enter category"
+              placeholder="Enter category"
               value={formData.Category}
               className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] border-b-2"
             >
               <option value="">Select Category</option>
               <option value="Co-curricular">Co-curricular</option>
-              <option value="extra-curricular">Extra-Curricular</option>
+              <option value="Extra-curricular">Extra-Curricular</option>
 
             </select>
           </label>
@@ -136,7 +137,7 @@ const CreateCertificate = () => {
               type="text"
               name="Googledrivelink"
               onChange={changeHandler}
-              placeholder="enter google drive link"
+              placeholder="Enter google drive link"
               value={formData.Googledrivelink}
               className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] border-b-2"
             />

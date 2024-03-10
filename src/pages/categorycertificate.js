@@ -46,7 +46,7 @@ const Categorycertificate = () => {
               className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-[200px] p-[8px] border-b-2 text-sm"
             >
               <option value="Co-curricular">Co-curricular</option>
-              <option value="Extra-Curricular">Extra-Curricular</option>
+              <option value="Extra-curricular">Extra-Curricular</option>
             </select>
           </label>
 
@@ -60,21 +60,28 @@ const Categorycertificate = () => {
       ) : (<table className="w-full mx-auto flex flex-col gap-12 mt-12">
       <thead>
         <tr className="flex justify-between gap-12 w-full mx-auto text-2xl text-amber-200">
-          <th>Certificate_Name</th>
-          <th>yearofCourse</th>
+        {user && user.role === "Admin" && (
+                <td>Student</td>
+        )}
+          <th >Certificate_Name</th>
+          <th>Year of Course</th>
           <th>AcademicYear</th>
-          <th>Category</th>
-          <th>Googledrivelink</th>
+         
+          <th>Link</th>
         </tr>
       </thead>
       <tbody className="flex flex-col">
       { 
       categorycerts && categorycerts.map((certificate) => (
           <tr key={certificate._id} className="flex justify-between w-full mx-auto text-xl border px-2 py-2 items-center">
-            <td>{certificate.certname}</td>
-            <td>{certificate.yearOfCourses}</td>
-            <td>{certificate.AcademicYear}</td>
-            <td>{certificate.Category}</td>
+            {user && user.role === "Admin" && (
+                <td className="uppercase">{certificate.student_name}</td>
+        )}
+              
+            <td className="uppercase justify-left">{certificate.certname}</td>
+            <td className="justify-left">{certificate.yearOfCourses}</td>
+            <td className="justify-left">{certificate.AcademicYear}</td>
+            
             <td>
             <a href={certificate.googleDriveLink} target="_blank" rel="noopener noreferrer">
 <AiOutlineLink />

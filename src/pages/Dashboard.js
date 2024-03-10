@@ -19,7 +19,7 @@ const Dashboard = () => {
         </Link>
         {user && user.role === "Admin" && (
         <Link to="/yearcert" className='bg-yellow-50 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-6'>
-            Certificates by year
+            Certificates by Year
         </Link>)}
         {user && user.role === "Admin" && (
         <Link to="/categorycert" className='bg-yellow-50 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-6'>
@@ -29,10 +29,14 @@ const Dashboard = () => {
         <Link to="/create"className='bg-yellow-50 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-6'>
            Upload new certificate
         </Link>)}
+        {user && user.role === "Admin" && (
+        <Link to="/academicyear"className='bg-yellow-50 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-6'>
+           Certificates by Academic Year
+        </Link>)}
      </div>
       <div classsName='w-[30%]'>
         <img src={profile}  className='w-[200px] h-[200px] rounded-md'/>
-        <div className='mt-4 text-center'>{user && user.name}</div>
+        <div className='mt-4 text-center uppercase'>{user && user.name}</div>
       </div>
     </div>
     )
