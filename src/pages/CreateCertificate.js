@@ -29,7 +29,7 @@ const CreateCertificate = () => {
     
         if (result && result.type === createcertificate.fulfilled.type) {
              
-          toast.success('Certificate created');
+          toast.success('Certificate submitted successfully');
           navigate('/dashboard');
         } else if (result && result.type === createcertificate.rejected.type) {
           toast.error(result.payload);
